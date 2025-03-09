@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohith Uppunuthula | About Me</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .about-section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 4px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+            max-width: 400px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 8px;
+            top: 15px;
+            left: 15px;
+            z-index: -1;
+        }
+        
+        .about-image img:hover {
+            transform: translateY(-10px);
+        }
+        
+        .about-details {
+            flex: 2;
+        }
+        
+        .about-intro {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .about-section-content {
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        .about-section-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .achievements {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .achievement-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .achievement-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            min-width: 24px;
+        }
+        
+        .achievement-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .books-section {
+            margin-top: 2rem;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .book {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .book:hover {
+            transform: translateY(-5px);
+        }
+        
+        .book-cover {
+            height: 120px;
+            width: 80px;
+            background-color: var(--light-gray);
+            margin: 0 auto 1rem;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .book h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .book p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .connect-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 3rem 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .connect-heading {
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--dark);
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .social-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        
+        .timeline-item {
+            padding: 1rem 3rem;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: calc(var(--i) * 0.2s);
+            opacity: 0;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-year {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 1.5rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-image {
+                margin-bottom: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .skill-tags {
+                justify-content: center;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="profilepicgithub.jpg" alt="Rohith Uppunuthula">
+                </div>
+                
+                <div class="about-details">
+                    <div class="about-intro">
+                        <p><span class="highlight">Hello! I'm Rohith Uppunuthula</span>, a passionate Computer Science undergraduate at SR University, currently in my second year. I'm driven by a profound curiosity for solving complex problems through elegant code and innovative thinking.</p>
+                    </div>
+                    
+                    <div class="about-section-content" style="animation-delay: 0.2s;">
+                        <h3>What I Do</h3>
+                        <p>I specialize in backend development and system design, with a strong foundation in Data Structures & Algorithms. My technical journey has equipped me with proficiency in several key technologies that power modern software solutions.</p>
+                        
+                        <div class="skill-tags">
+                            <div class="skill-tag">Java</div>
+                            <div class="skill-tag">C</div>
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">Data Structures</div>
+                            <div class="skill-tag">Algorithms</div>
+                            <div class="skill-tag">MERN Stack</div>
+                            <div class="skill-tag">Backend Development</div>
+                            <div class="skill-tag">System Design</div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section-content" style="animation-delay: 0.4s;">
+                        <h3>Journey & Goals</h3>
+                        <p>I believe in the continuous pursuit of knowledge and excellence. Currently, I'm focusing on mastering advanced DSA concepts to prepare for high-end tech internships, particularly at industry leaders like Microsoft.</p>
+                        <p>My academic record reflects my dedication with a GPA of 9.83/10.00. Beyond coursework, I actively contribute to open-source projects and build practical solutions that address real-world challenges. I'm committed to becoming a software engineer with expertise in creating scalable, efficient systems that make a meaningful impact.</p>
+                    </div>
+                    
+                    <div class="achievements">
+                        <h3>Key Achievements</h3>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-details">
+                                <h4>Outstanding Academic Achievement Award</h4>
+                                <p>Recognized for exceptional performance and consistent academic excellence in computer science coursework.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🚀</div>
+                            <div class="achievement-details">
+                                <h4>Gamification Excellence Award</h4>
+                                <p>Honored for innovative application of game mechanics in educational software development.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">💡</div>
+                            <div class="achievement-details">
+                                <h4>Communication Skills Club</h4>
+                                <p>Active member focusing on developing effective technical communication and presentation skills essential for collaborative development environments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section-content" style="animation-delay: 0.6s;">
+                        <h3>My Growth Journey</h3>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item left" style="--i: 1;">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">Today</span>
+                                    <h4>Focused Growth</h4>
+                                    <p>Mastering DSA and system design principles while contributing to open-source projects.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item right" style="--i: 2;">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">Near Future</span>
+                                    <h4>High-Impact Internship</h4>
+                                    <p>Aiming to secure an internship at Microsoft or similar tech leaders to apply and enhance my skills.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item left" style="--i: 3;">
+                                <div class="timeline-content">
+                                    <span class="timeline-year">Long Term</span>
+                                    <h4>Software Engineering Excellence</h4>
+                                    <p>Becoming a software engineer who builds scalable solutions with innovative problem-solving approaches.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section-content books-section" style="animation-delay: 0.8s;">
+                        <h3>Books That Shaped My Thinking</h3>
+                        <p>I believe in continuous personal development. These books have significantly influenced my approach to learning and problem-solving:</p>
+                        
+                        <div class="books-grid">
+                            <div class="book">
+                                <div class="book-cover"></div>
+                                <h4>Atomic Habits</h4>
+                                <p>James Clear</p>
+                            </div>
+                            
+                            <div class="book">
+                                <div class="book-cover"></div>
+                                <h4>The 48 Laws of Power</h4>
+                                <p>Robert Greene</p>
+                            </div>
+                            
+                            <div class="book">
+                                <div class="book-cover"></div>
+                                <h4>Think Like a Monk</h4>
+                                <p>Jay Shetty</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="connect-section">
+                        <div class="connect-heading">
+                            <h3>Let's Connect</h3>
+                            <p>I'm always open to discussing new projects, innovative ideas, or opportunities to be part of your vision.</p>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/rohith-uppunuthula/" class="social-link" target="_blank">
+                                <div class="social-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </div>
+                                <span>LinkedIn</span>
+                            </a>
+                            
+                            <a href="https://github.com/Rohith-dev-10" class="social-link" target="_blank">
+                                <div class="social-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </div>
+                                <span>GitHub</span>
+                            </a>
+                            
+                            <a href="mailto:uppunuthula.rohith@gmail.com" class="social-link">
+                                <div class="social-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <span>Email</span>
+                            </a>
+                        </div>
+                        
+                        <a href="ROHITH UPPUNUTHULA RESUME PDF.pdf" class="btn" download>Download My Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate skill progress bars
+            const skillProgress = document.querySelectorAll('.skill-progress');
+            skillProgress.forEach(progress => {
+                setTimeout(() => {
+                    progress.style.width = progress.getAttribute('data-progress') + '%';
+                }, 300);
+            });
+            
+            // Animate timeline items on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Animate section content on scroll
+            const sectionContent = document.querySelectorAll('.about-section-content');
+            
+            const contentObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sectionContent.forEach(content => {
+                contentObserver.observe(content);
+            });
+        });
+    </script>
+</body>
+</html>
